@@ -257,6 +257,7 @@ function Hero() {
           muted
           loop
           playsInline
+          preload="auto"
           className="w-full h-full object-cover scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-crust-dark/75 via-crust-dark/50 to-crust-dark/85" />
@@ -395,11 +396,12 @@ function Schedule() {
           <div className="absolute inset-0">
             <video
               src={videos.cakesSlow}
-              poster={images.vitrine}
+              //poster={images.vitrine}
               autoPlay
               muted
               loop
               playsInline
+              preload="auto"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-crust-dark/75 backdrop-blur-[2px]" />
