@@ -40,7 +40,7 @@ function Reveal({ children, className = '', delay = 0 }: { children: React.React
 // Images & Videos - Real content inspired by @le.fournil.gourmand Instagram
 const images = {
   // Hero: colorful vitrine with mirror glaze cakes matching their Instagram
-  hero: '/images/IMG_6255.jpg',
+  //hero: '/images/IMG_6255.jpg',
   // Display case with modern entremets
   vitrine: '/images/IMG_6255.jpg',
   // Mirror glaze yellow/white cakes
@@ -53,18 +53,18 @@ const images = {
   // Individual desserts
   individualCakes: 'https://images.pexels.com/photos/38431267/pexels-photo-38431267.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   // Bakery display case
-  displayCase: '/public/images/patisserie.jpeg',
+  displayCase: '/images/patisserie.jpeg',
   // Traditional breads
   baguettes: '/images/tourte_de_meule .jpeg',
   breadBasket: 'https://images.pexels.com/photos/30846570/pexels-photo-30846570.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   // Viennoiseries
-  croissants: '/public/images/croissant.jpeg',
+  croissants: '/images/croissant.jpeg',
   viennoiseries: 'https://images.pexels.com/photos/29380149/pexels-photo-29380149.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   // Chocolates
   chocolates: 'https://images.pexels.com/photos/1397292/pexels-photo-1397292.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   // Baker at work
   baker: '/images/IMG_6277.jpg',
-  oven: '/public/images/pain.jpeg',
+  oven: '/images/pain.jpeg',
   dough: 'https://images.pexels.com/photos/38597841/pexels-photo-38597841.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   // Tarts
   tarts: 'https://images.pexels.com/photos/15366687/pexels-photo-15366687.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
@@ -73,10 +73,10 @@ const images = {
   // Elegant desserts
   elegantDessert: 'https://images.pexels.com/photos/19712163/pexels-photo-19712163.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   // Bread on linen
-  breadLinen: '/public/images/i91973-pain-cereales.jpg',
+  breadLinen: '/images/i91973-pain-cereales.jpg',
   // Bakery French
   bakeryFrench: '/images/pain_bucheron.jpeg',
-  mixt:'/public/images/viennoiserie.jpeg'
+  mixt:'/images/viennoiserie.jpeg'
 };
 
 // Real videos of French bakery (UHD 4K from Pexels)
@@ -96,7 +96,7 @@ const videos = {
   // Bakery flour preparation
   flour: 'https://videos.pexels.com/video-files/8189813/8189813-uhd_4096_2160_25fps.mp4',
   // Cakes in slow motion
-  cakesSlow: '/public/videos/video_kamel.mp4',
+  cakesSlow: '/videos/video_kamel.mp4',
   // Pastry decoration
   decoration: '/videos/Video2026-09-05.mp4',
   // Pain restaurant
@@ -252,7 +252,7 @@ function Hero() {
       <div className="absolute inset-0">
         <video
           src={videos.breadDisplay}
-          poster={images.hero}
+          //poster={images.hero}
           autoPlay
           muted
           loop
@@ -1005,7 +1005,7 @@ function VideoSection() {
     },
     {
       src: videos.baking,
-      thumb: '/public/images/arriere_plan.jpeg',
+      thumb: '/images/arriere_plan.jpeg',
       title: 'La Cuisson',
       desc: 'Sortie du four à bois, 240°C',
       duration: '0:09',
