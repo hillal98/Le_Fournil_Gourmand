@@ -1,0 +1,12 @@
+[build]
+  # On utilise npx pour éviter le problème de permission sur le binaire local
+  command = "npx vite build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Le plugin n'est pas nécessaire pour un site React/Vite simple, 
+# vous pouvez le retirer pour simplifier, mais je le laisse si vous en avez besoin.
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
