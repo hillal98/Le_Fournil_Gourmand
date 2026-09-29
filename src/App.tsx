@@ -95,10 +95,10 @@ const products = {
 };
 
 const galleryItems = [
-  { type: 'video', src: videos.baking, alt: 'Cuisson au four' ,thumb: '/public/images/video.png' },
+  { type: 'video', src: videos.baking, alt: 'Cuisson au four' ,thumb: '/images/video.png' },
   { type: 'image', src: images.vitrine, alt: 'Vitrine pâtisserie' },
   { type: 'image', src: images.mirrorGlaze, alt: 'Entremets miroir' },
-  { type: 'video', src: videos.kneading, alt: 'Pétrissage à la main' ,thumb: '/public/images/petrissage.jpeg'},
+  { type: 'video', src: videos.kneading, alt: 'Pétrissage à la main' ,thumb: '/images/petrissage.png'},
   { type: 'image', src: images.baker, alt: 'Boulanger au travail' },
   { type: 'image', src: images.colorfulCakes, alt: 'Gâteaux colorés' },
   { type: 'video', src: videos.croissant, thumb: 'https://images.pexels.com/videos/32212252/pexels-photo-32212252.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200', alt: 'Croissant doré' },
@@ -697,14 +697,14 @@ function VideoSection() {
   const videoGallery = [
     {
       src: videos.kneading,
-      thumb: '/images/petrissage.jpeg',
+      thumb: '/images/petrissage.png',
       title: 'Le Pétrissage',
       desc: 'Notre pâte à pain pétrie à la main',
       duration: '0:22',
     },
     {
       src: videos.pastry,
-      thumb: '/images/façonnage.jpeg',
+      thumb: '/images/faconage.png',
       title: 'Le Façonnage',
       desc: 'Chaque viennoiserie façonnée avec soin',
       duration: '0:18',
@@ -733,7 +733,7 @@ function VideoSection() {
     {
       src: videos.cakesSlow,
       title: 'Les Entremets',
-      thumb: '/images/etremets.jpeg',
+      thumb: '/images/entremets.png',
       desc: 'En slow motion, toute la magie',
       duration: '0:27',
     },
