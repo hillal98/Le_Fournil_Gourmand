@@ -265,3 +265,9 @@ body {
 .modal-in {
   animation: modalIn 0.3s ease-out forwards;
 }
+
+/* Marquee scroll for Instagram feed */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
