@@ -1,4 +1,29 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, type ImgHTMLAttributes } from 'react';
+
+function Img({ className = '', style, ...props }: ImgHTMLAttributes<HTMLImageElement>) {
+  const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) setLoaded(true);
+  }, []);
+
+  return (
+    <img
+      ref={imgRef}
+      {...props}
+      loading="lazy"
+      decoding="async"
+      onLoad={() => setLoaded(true)}
+      className={className}
+      style={{
+        ...style,
+        opacity: loaded ? 1 : 0,
+        transition: 'opacity 0.6s ease-out, transform 0.7s ease-out',
+      }}
+    />
+  );
+}
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -38,12 +63,12 @@ function Reveal({ children, className = '', delay = 0 }: { children: React.React
 const images = {
   vitrine: '/images/IMG_6255.jpg',
   mirrorGlaze: '/images/vitrine.jpeg',
-  sandwich: '/images/sandwich.png',
-  raspberryCakes: '/images/framboise.png',
+  sandwich: '/images/sandwich.jpg',
+  raspberryCakes: '/images/framboise.jpg',
   pastriesDisplay: 'https://images.pexels.com/photos/19499004/pexels-photo-19499004.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   individualCakes: 'https://images.pexels.com/photos/38431267/pexels-photo-38431267.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   displayCase: '/images/patisserie.jpeg',
-  baguettes: '/images/tourte_de_meule .jpeg',
+  baguettes: '/images/tourte_de_meule.jpeg',
   breadBasket: 'https://images.pexels.com/photos/30846570/pexels-photo-30846570.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
   croissants: '/images/croissant.jpeg',
   viennoiseries: 'https://images.pexels.com/photos/29380149/pexels-photo-29380149.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
@@ -428,34 +453,34 @@ function About() {
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
         <div className="relative">
           <div className="grid grid-cols-2 gap-4">
-            <img
-              src={images.baker}
-              alt="Boulanger au travail"
-              loading="lazy"
-              decoding="async"
-              className="rounded-2xl shadow-lg shadow-crust/20 w-full h-72 object-cover object-top"
-            />
-            <img
-              src={images.dough}
-              alt="Pétrissage de la pâte"
-              loading="lazy"
-              decoding="async"
-              className="rounded-2xl shadow-lg shadow-crust/20 w-full h-72 object-cover mt-10"
-            />
-            <img
-              src={images.oven}
-              alt="Four traditionnel"
-              loading="lazy"
-              decoding="async"
-              className="rounded-2xl shadow-lg shadow-crust/20 w-full h-56 object-cover -mt-4"
-            />
-            <img
-              src={images.displayCase}
-              alt="Vitrine de la boulangerie"
-              loading="lazy"
-              decoding="async"
-              className="rounded-2xl shadow-lg shadow-crust/20 w-full h-56 object-cover mt-6"
-            />
+            <div className="rounded-2xl shadow-lg shadow-crust/20 overflow-hidden h-72 bg-stone-200">
+              <Img
+                src={images.baker}
+                alt="Boulanger au travail"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div className="rounded-2xl shadow-lg shadow-crust/20 overflow-hidden h-72 mt-10 bg-stone-200">
+              <Img
+                src={images.dough}
+                alt="Pétrissage de la pâte"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="rounded-2xl shadow-lg shadow-crust/20 overflow-hidden h-56 -mt-4 bg-stone-200">
+              <Img
+                src={images.oven}
+                alt="Four traditionnel"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="rounded-2xl shadow-lg shadow-crust/20 overflow-hidden h-56 mt-6 bg-stone-200">
+              <Img
+                src={images.displayCase}
+                alt="Vitrine de la boulangerie"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
           <div className="absolute -bottom-6 -left-6 bg-crust-dark text-white rounded-2xl p-6 shadow-xl max-w-[200px] hidden md:block">
             <div className="font-script text-4xl text-butter leading-none">Depuis</div>
@@ -550,13 +575,11 @@ function Specialties() {
               key={i}
               className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl shadow-crust/5 transition-all duration-500"
             >
-              <div className="relative h-72 overflow-hidden">
-                <img
+              <div className="relative h-72 overflow-hidden bg-stone-200">
+                <Img
                   src={s.img}
                   alt={s.name}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover group-hover:scale-110"
                 />
                 <div className="absolute top-4 left-4 bg-white/95 backdrop-blur text-crust-dark text-xs font-bold px-3 py-1.5 rounded-full shadow-md uppercase tracking-wider">
                   {s.tag}
@@ -626,13 +649,11 @@ function Products() {
               key={`${active}-${i}`}
               className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl shadow-crust/5 hover:shadow-crust/10 transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="relative h-56 overflow-hidden">
-                <img
+              <div className="relative h-56 overflow-hidden bg-stone-200">
+                <Img
                   src={p.img}
                   alt={p.name}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover group-hover:scale-110"
                 />
               </div>
               <div className="p-5">
@@ -854,7 +875,7 @@ function Gallery() {
           {galleryItems.map((g, i) => (
             <Reveal key={i} delay={(i % 4) * 100}>
               <div
-                className={`relative overflow-hidden rounded-xl group cursor-pointer ${
+                className={`relative overflow-hidden rounded-xl group cursor-pointer bg-stone-200 ${
                   i === 0 || i === 5 ? 'md:row-span-2 md:col-span-1' : ''
                 }`}
                 onMouseEnter={(e) => {
@@ -882,12 +903,10 @@ function Gallery() {
                     }`}
                   />
                 ) : (
-                  <img
+                  <Img
                     src={g.src}
                     alt={g.alt}
-                    loading="lazy"
-                    decoding="async"
-                    className={`w-full object-cover transition-transform duration-700 group-hover:scale-110 ${
+                    className={`w-full object-cover group-hover:scale-110 ${
                       i === 0 || i === 5 ? 'h-full min-h-[260px] md:min-h-[400px]' : 'h-44 md:h-52'
                     }`}
                   />
@@ -953,7 +972,7 @@ function InstagramFeed() {
           {feedItems.map((item, i) => (
             <div
               key={i}
-              className="relative flex-shrink-0 w-64 h-64 md:w-72 md:h-72 rounded-xl overflow-hidden group cursor-pointer"
+              className="relative flex-shrink-0 w-64 h-64 md:w-72 md:h-72 rounded-xl overflow-hidden group cursor-pointer bg-stone-200"
             >
               {item.type === 'video' ? (
                 <video
@@ -971,12 +990,10 @@ function InstagramFeed() {
                   }}
                 />
               ) : (
-                <img
+                <Img
                   src={item.src}
                   alt={item.alt}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover group-hover:scale-110"
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-crust-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
